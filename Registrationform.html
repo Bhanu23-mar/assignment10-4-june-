@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registration form</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            justify-content: center;
+            display: flex;
+            padding: top;
+        }
+        table {
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        td {
+            padding: 10px;
+        }    
+        input {
+            padding: 5px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            border: 2px solid red;
+        }
+        .error {
+            border: 2px solid red;
+            background-color: #ffd6d6;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 10px 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <form onsubmit="return validateform()">
+        <table>
+            <tr>
+                <td colspan="2"><h2 style="text-align: center; color: #333;">Registration formS</h2></td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" id="name"></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="text" id="email"></td>
+            </tr>
+            <tr>
+                <td>Website</td>
+                <td><input type="text" id="website"></td>
+            </tr>
+            <tr>
+                <td>Message:</td>
+                <td><input textarea id="message"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="submit">
+                </td>
+            </tr>
+        </table>
+        <p id="error" style="color: red;"></p>
+    </form>
+
+    <script>
+        function validateform() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let website = document.getElementById("website").value;
+            let message = document.getElementById("message").value;
+            let error = "";
+
+            if (name =="") {
+                error = "Name is required";
+            }
+            else if (email =="") {
+                error = "Email is required";
+            }
+            else if (!email.includes("@")) {
+                error = "Email must contain @"
+            }
+            else if(message =="") {
+                error = "Message is required";
+            }
+            if (error) {
+                document.getElementById("error").innerText = error;
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
